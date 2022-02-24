@@ -1,9 +1,9 @@
 Package: AdaptiveMRMC
 Type: Package
 Version: 1.0.0
-Date: 05-02-2018
+Date: 02-24-2022
 Title: Adaptive Designs for Multi-Readers Multi-Cases Studies
-Author: Zhipeng Huang <huangzp2016@gmail.com>
+Author: Zhipeng Huang <huangzp2016@gmail.com>, Weijie Chen <weijie.chen@fda.hhs.gov>
 Maintainer: Weijie Chen <weijie.chen@fda.hhs.gov>, Zhipeng Huang <huangzp2016@gmail.com>
 Description: Adaptive designs in Multi-Reader Multi-Case (MRMC) clinical trials 
              of imaging devices
