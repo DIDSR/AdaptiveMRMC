@@ -4,8 +4,7 @@
 \alias{adaptiveI}
 \title{Adaptive method I where only reader sample is resized}
 \usage{
-adaptiveI(data.interim, samples, randseed = 666, alpha0 = 0.025,
-  beta0 = 0.2)
+adaptiveI(data.interim, samples, randseed = 666, alpha0 = 0.025, beta0 = 0.2)
 }
 \arguments{
 \item{data.interim}{[data.frame] with (nc0+nc1)+nr.1*(nc0+nc1)*2 rows and 4 variables including:

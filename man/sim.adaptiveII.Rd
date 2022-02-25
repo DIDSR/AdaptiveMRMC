@@ -4,8 +4,7 @@
 \alias{sim.adaptiveII}
 \title{Implement simulation evaluation of adaptive method II where only both reader sample and case samples are resized}
 \usage{
-sim.adaptiveII(samples, paras, randseed = 666, alpha0 = 0.025,
-  beta0 = 0.2)
+sim.adaptiveII(samples, paras, randseed = 666, alpha0 = 0.025, beta0 = 0.2)
 }
 \arguments{
 \item{samples}{[list] of sample sizes:

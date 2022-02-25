@@ -4,8 +4,7 @@
 \alias{adaptiveII}
 \title{Adaptive method II where both reader sample and case samples are resized}
 \usage{
-adaptiveII(data.interim, samples, randseed = 666, alpha0 = 0.025,
-  beta0 = 0.2)
+adaptiveII(data.interim, samples, randseed = 666, alpha0 = 0.025, beta0 = 0.2)
 }
 \arguments{
 \item{data.interim}{[data.frame] with (nc10+nc11)+nr.1*(nc10+nc11)*2 rows and 4 variables including:

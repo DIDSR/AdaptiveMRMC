@@ -51,7 +51,7 @@
 #' @export
 ## @import iMRMC
 #' @importFrom iMRMC doIMRMC
-#' by Zhipeng Huang
+
 
 adaptiveII = function(data.interim, samples, randseed=666, alpha0 = 0.025, beta0 = 0.2){
   ## set the quantile z.alpha and z.beta w.r.t. type I error and targeted power
