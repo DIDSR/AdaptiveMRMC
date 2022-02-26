@@ -19,4 +19,4 @@ Huang Z, Samuelson F, Tcheuko L, Chen W. Adaptive designs in multi-reader multi-
   `library(AdaptiveMRMC)`  
   `source(paste0(.libPaths()[1], '/AdaptiveMRMC/Workflow_example/demoAdaptiveMRMC.R'))` 
   
-4. The code for simulation studies in our paper is included in the package under *your_package_path/AdaptiveMRMC/Simulations*
+4. The code for simulation studies in our paper is included in the package under *your_package_path/AdaptiveMRMC/Simulations*. Please note these are running codes customized to our computer cluster and may not run on your computer. The purpose of including these raw research code is for reference, e.g., by reading the code one may find how the adaptive methods are applied to the simulated data.
