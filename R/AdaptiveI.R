@@ -41,7 +41,8 @@
 #'              $...: other intermediate results
 #'
 #' @export
-## @import iMRMC
+#' @references Huang Z, Samuelson F, Tcheuko L, Chen W.Statistical Methods in Medical Research. 2020;29(6):1592-1611.
+#'
 #' @importFrom iMRMC doIMRMC
 
 adaptiveI = function(data.interim, samples, randseed=666, alpha0 = 0.025, beta0 = 0.2){

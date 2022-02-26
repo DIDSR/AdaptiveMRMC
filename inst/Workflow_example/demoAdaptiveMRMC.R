@@ -6,6 +6,7 @@
 #' Statistical Methods in Medical Research. 2020;29(6):1592-1611. doi:10.1177/0962280219869370
 #'
 library(iMRMC)
+
 "%+%" = function(x,y) paste(x,y,sep="")
 
 print("This is a demonstration of adaptive method 1 with simulation data:re-sizing the readers after an interim analysis")
@@ -19,14 +20,13 @@ print("Assuming initial sizing: Nr.init = 8, Nc.0 = 100, Nc.1 = 100")
 print("In adaptive method 1, we only resize the number of readers")
 print("Interim analysis will be conducted after collecting Nr.1 = 3 readers' data")
 Nr.max = 30; Nc.0.max = 250; Nc.1.max = 250
-Nr.init = 8; Nr.1 = 3; Nc.0 = 100; Nc.1 = 100;
+Nr.init = 8; Nr.1 = 3; Nc.0 = 100; Nc.1 = 100
 readline(prompt="Press [enter] to continue")
 
-#indir = "C:/Users/WXC4/OneDrive - FDA/Documents/Research/AdaptiveMRMC/ZhipengHuang/MRMC/Rpackage/Testing";
-Para = "para."; Tbl = "Table1";
-#load(indir %+% "/ParameterSetting/ParameterSettingFor" %+% Tbl %+% ".Rdata")
+
 print("#######################################################################")
 print("STEP2: Collection of data before the interim analysis. Here we use simulat ion to generate data for demo purpose.")
+# thisFile is a function to find the path of the current file. This is used to load simulation parameters.
 thisFile <- function() {
   cmdArgs <- commandArgs(trailingOnly = FALSE)
   needle <- "--file="
@@ -39,33 +39,38 @@ thisFile <- function() {
     return(normalizePath(sys.frames()[[1]]$ofile))
   }
 }
+Para = "para."; Tbl = "Table1";
 load(file.path(dirname(thisFile()),"ParameterSettingForTable1.Rdata"))
 ParaSet = eval(as.name(Para %+% "alter50"))
 set.seed(2022);
+# simulation of MRMC data
 dFrame.imrmc = mrmcRMscoresFC(Nr.max, Nc.0.max, Nc.1.max, ParaSet[5,])
-
 data.interim = subset(dFrame.imrmc$dFrame.imrmc, caseID %in% c(paste0("negCase", 1:Nc.0), paste0("posCase", 1:Nc.1)) &
                         readerID %in% c(paste0("reader", 1:Nr.1), "-1"))
 samples <- list("Nr.init" = Nr.init, "Nr.1" = Nr.1, "Nc.0" = Nc.0, "Nr.max" = Nr.max, "R.Nc0toNc1" = 1)
+
 readline(prompt="Press [enter] to continue")
 
 print("######################################################################")
 print("STEP3: Interim analysis.")
 print("Please wait...")
+# key function interim.adap to perform interim analysis
 interim.adap = adaptiveI(data.interim, samples, 1)
 print("Interium analysis results:")
 print(sprintf("The conditional power in the interim analysis was found to be %f", interim.adap$CP.inter))
-print(sprintf("The reader sample size is adaptively re-sized to %i to achieve a power of %f", interim.adap$nr.adap,interim.adap$CP.adap))
+print(sprintf("The reader sample size is adaptively re-sized to %i to achieve a power of %f", interim.adap$nr.adap,round(interim.adap$CP.adap, 4)))
 print(sprintf("The critical value for z test in the final analysis is computed as %f", round(interim.adap$cv.adap, 4)))
 
 readline(prompt="Press [enter] to continue")
 
 
 print("######################################################################")
-print("STEP4: Collection of data after interim analysis and Final analysis.")
+print("STEP4: Collection of data after interim analysis according to re-sizing results and final analysis.")
 print("Please wait...")
+# data collection (from simulated data, note the number of readers goes to interim.adap$nr.adap)
 data.adap = subset(dFrame.imrmc$dFrame.imrmc, caseID %in% c(paste0("negCase", 1:Nc.0), paste0("posCase", 1:Nc.1)) &
                      readerID %in% c(paste0("reader", 1:interim.adap$nr.adap), "-1"))
+# analyze the data with the iMRMC software
 randseed = 2
 wkdir = paste(getwd(), "/", randseed+3, sep = ""); dir.create(wkdir)
 BDG.0 = doIMRMC(data = data.adap, workDir = wkdir)
@@ -75,7 +80,7 @@ BDG.adap = list(Ustat = BDG.0$Ustat,
                 MLEstat = BDG.0$MLEstat)
 row.names(BDG.adap$moments) = c("modalityA", "modalityB", "crossAB", "coeff")
 rm(BDG.0); unlink(wkdir, recursive = TRUE)
-
+# hypothesis testing with z statistic and the adjusted critical value obtained in the interim analysis
 dAUC.adap = BDG.adap$Ustat$AUCAminusAUCB[3];
 var.dAUC.adap = BDG.adap$Ustat$varAUCAminusAUCB[3]
 z.adap = dAUC.adap/sqrt(var.dAUC.adap)

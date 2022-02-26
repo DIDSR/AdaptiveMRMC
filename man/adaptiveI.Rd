@@ -52,3 +52,6 @@ result.interim [list] with the updated reader size and critical value, and other
 The main function to implement the adaptive method I where only the reader size is adapted after the data for the interim analysis has been collected.
 The critical value and the reader sample size are updated simultaneously. The data for interim analysis has been converted to doIMRMC formatted data frame. The cases sizes remain unchanged. Right-sided hypothesis test is considered.
 }
+\references{
+Huang Z, Samuelson F, Tcheuko L, Chen W.Statistical Methods in Medical Research. 2020;29(6):1592-1611.
+}

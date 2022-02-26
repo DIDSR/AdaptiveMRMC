@@ -61,3 +61,6 @@ The main function to implement the adaptive method II where both the reader and 
 The critical value and the reader/cases sample sizes are updated simultaneously. The data for interim analysis has been converted to doIMRMC formatted data frame.  Right-sided hypothesis test is considered.
 Please refer to xxx paper for more detail.
 }
+\references{
+Huang Z, Samuelson F, Tcheuko L, Chen W.Statistical Methods in Medical Research. 2020;29(6):1592-1611.
+}

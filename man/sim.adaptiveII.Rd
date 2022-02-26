@@ -65,3 +65,6 @@ result.interim [list] with the updated reader/cases sizes, critical value, test 
 \description{
 This is the main function to implement simulations to evaluate the adaptive method II where both the reader size and case sizes are adapted. Right-sided hypothesis test is considered
 }
+\references{
+Huang Z, Samuelson F, Tcheuko L, Chen W.Statistical Methods in Medical Research. 2020;29(6):1592-1611.
+}

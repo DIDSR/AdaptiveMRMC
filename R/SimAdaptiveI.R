@@ -49,6 +49,7 @@
 #'              $...: other intermediate and final results
 #'
 #' @export
+#' @references Huang Z, Samuelson F, Tcheuko L, Chen W.Statistical Methods in Medical Research. 2020;29(6):1592-1611.
 ## @import iMRMC
 #' @importFrom iMRMC doIMRMC
 
