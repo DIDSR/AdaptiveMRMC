@@ -13,7 +13,7 @@ Huang Z, Samuelson F, Tcheuko L, Chen W. Adaptive designs in multi-reader multi-
 
 1. Install iMRMC R package from CRAN or [github](https://github.com/DIDSR/iMRMC). Note that this package requires Java 1.7 or above.
 
-2. Install [AdaptiveMRMC](https://github.com/DIDSR/AdaptiveMRMC) R pakcage by downloading the source package [released on github](https://github.com/WeijieChen/AdaptiveMRMC/releases/download/1st_release/AdaptiveMRMC_1.0.0.tar.gz)
+2. Install [AdaptiveMRMC](https://github.com/DIDSR/AdaptiveMRMC) R pakcage by downloading the source package [released on github](https://github.com/DIDSR/AdaptiveMRMC/releases/download/1st_release/AdaptiveMRMC_1.0.0.tar.gz)
 3. Run the workflow example under *your_package_path/AdaptiveMRMC/Workflow_example/demoAdaptiveMRMC.R* This workflow example shows the four steps in designing and analyzing an adaptive MRMC study using adaptive method 1 (adaptively re-sizing readers) as described in our paper. A similar workflow can be followed using adaptive method 2 (adaptively re-sizing both readers and cases).
 
   `library(AdaptiveMRMC)`  
